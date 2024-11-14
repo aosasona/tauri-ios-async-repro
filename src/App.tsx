@@ -1,4 +1,5 @@
-import { useState } from "react";
+import Database from "@tauri-apps/plugin-sql";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { warn, debug, trace, info, error } from '@tauri-apps/plugin-log';
 
@@ -29,6 +30,12 @@ type Todo = {
 function App() {
 	const [todos, setTodos] = useState<Todo[]>([]);
 
+	useEffect(() => {
+		Database.load("sqlite:todo.db")
+			.then(async (_) => { console.log("Database loaded"); })
+			.catch(console.error);
+	}, []);
+
 	async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
 		try {
 			event.preventDefault();
@@ -36,7 +43,9 @@ function App() {
 
 			const data = new FormData(event.currentTarget);
 			const title = data.get("title") as string;
-			const result: Todo = await invoke("create_todo", { title, completed: false });
+			const result: Todo = await invoke("create_todo", {
+				todo: { title, completed: false, }
+			});
 			setTodos([...todos, result]);
 		} catch (error) {
 			console.error(error);

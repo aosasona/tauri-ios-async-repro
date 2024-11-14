@@ -13,6 +13,20 @@ macro_rules! dsn {
     };
 }
 
+macro_rules! get_pool {
+    ($app:ident) => {{
+        let db_instances = &*$app.state::<tauri_plugin_sql::DbInstances>();
+        let instances = db_instances.0.read().await;
+
+        let tauri_plugin_sql::DbPool::Sqlite(pool) = instances
+            .values()
+            .next()
+            .ok_or_else(|| "No database instance found".to_string())?;
+
+        pool.clone()
+    }};
+}
+
 struct AppState {
     db: Arc<SqlitePool>,
 }
@@ -27,10 +41,23 @@ struct Todo {
     created_at: Option<i64>,
 }
 
+#[allow(unreachable_patterns)]
 #[tauri::command]
-async fn create_todo(state: tauri::State<'_, AppState>, data: Todo) -> Result<Todo, String> {
-    let db = state.db.clone();
-    let mut conn = db.acquire().await.unwrap();
+// async fn create_todo(app: tauri::AppHandle, todo: Todo) -> Result<Todo, String> {
+//     let db = get_pool!(app);
+async fn create_todo(
+    db_instances: tauri::State<'_, tauri_plugin_sql::DbInstances>,
+    todo: Todo,
+) -> Result<Todo, String> {
+    let instances = db_instances.0.read().await;
+    dbg!(instances.keys());
+    let db = instances
+        .get(dsn!())
+        .ok_or_else(|| "No database instance found".to_string())
+        .map(|instance| match instance {
+            tauri_plugin_sql::DbPool::Sqlite(pool) => pool.clone(),
+            _ => panic!("Invalid database instance"),
+        })?;
 
     let row = sqlx::query_as::<_, Todo>(
         r#"
@@ -39,10 +66,10 @@ async fn create_todo(state: tauri::State<'_, AppState>, data: Todo) -> Result<To
         RETURNING id, title, completed, created_at
         "#,
     )
-    .bind(data.title)
-    .bind(data.completed)
+    .bind(todo.title)
+    .bind(todo.completed)
     .bind(chrono::Utc::now().timestamp())
-    .fetch_one(&mut *conn)
+    .fetch_one(&db)
     .await
     .map_err(|e| e.to_string())?;
 
@@ -50,9 +77,8 @@ async fn create_todo(state: tauri::State<'_, AppState>, data: Todo) -> Result<To
 }
 
 #[tauri::command]
-async fn get_all_todos(state: tauri::State<'_, AppState>) -> Result<Vec<Todo>, String> {
-    let db = state.db.clone();
-    let mut conn = db.acquire().await.unwrap();
+async fn get_all_todos(app: tauri::AppHandle) -> Result<Vec<Todo>, String> {
+    let db = get_pool!(app);
 
     let rows = sqlx::query_as::<_, Todo>(
         r#"
@@ -60,7 +86,7 @@ async fn get_all_todos(state: tauri::State<'_, AppState>) -> Result<Vec<Todo>, S
         FROM todos
         "#,
     )
-    .fetch_all(&mut *conn)
+    .fetch_all(&db)
     .await
     .map_err(|e| e.to_string())?;
 
@@ -102,20 +128,20 @@ pub fn run() {
 
     tauri::Builder::default()
         // .manage(AppState { db: db_pool }) // NOTE: uncomment to use `.manage`
-        .setup(|app: &mut tauri::App| {
-            tauri::async_runtime::block_on(async {
-                setup(app.handle()).await;
-            });
-
-            Ok(())
-        })
-        .plugin(tauri_plugin_log::Builder::new().build())
-        .plugin(tauri_plugin_shell::init())
+        // .setup(|app: &mut tauri::App| {
+        //     tauri::async_runtime::block_on(async {
+        //         setup(app.handle()).await;
+        //     });
+        //
+        //     Ok(())
+        // })
         .plugin(
             tauri_plugin_sql::Builder::new()
                 .add_migrations(dsn!(), migrations)
                 .build(),
         )
+        .plugin(tauri_plugin_log::Builder::new().build())
+        .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![create_todo, get_all_todos])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
