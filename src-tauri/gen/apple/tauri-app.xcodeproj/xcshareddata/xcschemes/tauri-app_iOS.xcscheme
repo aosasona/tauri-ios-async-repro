@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC2FC810F690BB5FC0404844"
-               BuildableName = "tauri-ios-async-repro_iOS.app"
-               BlueprintName = "tauri-ios-async-repro_iOS"
-               ReferencedContainer = "container:tauri-ios-async-repro.xcodeproj">
+               BlueprintIdentifier = "067C19C8047A2326EE93616E"
+               BuildableName = "tauri-app_iOS.app"
+               BlueprintName = "tauri-app_iOS"
+               ReferencedContainer = "container:tauri-app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC2FC810F690BB5FC0404844"
-            BuildableName = "tauri-ios-async-repro_iOS.app"
-            BlueprintName = "tauri-ios-async-repro_iOS"
-            ReferencedContainer = "container:tauri-ios-async-repro.xcodeproj">
+            BlueprintIdentifier = "067C19C8047A2326EE93616E"
+            BuildableName = "tauri-app_iOS.app"
+            BlueprintName = "tauri-app_iOS"
+            ReferencedContainer = "container:tauri-app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -69,10 +69,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC2FC810F690BB5FC0404844"
-            BuildableName = "tauri-ios-async-repro_iOS.app"
-            BlueprintName = "tauri-ios-async-repro_iOS"
-            ReferencedContainer = "container:tauri-ios-async-repro.xcodeproj">
+            BlueprintIdentifier = "067C19C8047A2326EE93616E"
+            BuildableName = "tauri-app_iOS.app"
+            BlueprintName = "tauri-app_iOS"
+            ReferencedContainer = "container:tauri-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -100,10 +100,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC2FC810F690BB5FC0404844"
-            BuildableName = "tauri-ios-async-repro_iOS.app"
-            BlueprintName = "tauri-ios-async-repro_iOS"
-            ReferencedContainer = "container:tauri-ios-async-repro.xcodeproj">
+            BlueprintIdentifier = "067C19C8047A2326EE93616E"
+            BuildableName = "tauri-app_iOS.app"
+            BlueprintName = "tauri-app_iOS"
+            ReferencedContainer = "container:tauri-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

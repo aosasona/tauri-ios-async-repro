@@ -1,13 +1,13 @@
 # Uncomment the next line to define a global platform for your project
 
-target 'tauri-ios-async-repro_iOS' do
+target 'tauri-app_iOS' do
 platform :ios, '13.0'
-  # Pods for tauri-ios-async-repro_iOS
+  # Pods for tauri-app_iOS
 end
 
-target 'tauri-ios-async-repro_macOS' do
+target 'tauri-app_macOS' do
 platform :osx, '11.0'
-  # Pods for tauri-ios-async-repro_macOS
+  # Pods for tauri-app_macOS
 end
 
 # Delete the deployment target for iOS and macOS, causing it to be inherited from the Podfile

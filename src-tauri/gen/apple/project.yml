@@ -1,6 +1,6 @@
-name: tauri-ios-async-repro
+name: tauri-app
 options:
-  bundleIdPrefix: com.tauri-ios-async-repro.app
+  bundleIdPrefix: com.tauri-app.app
   deploymentTarget:
     iOS: 13.0
 fileGroups: [../../src]
@@ -10,8 +10,8 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: tauri-ios-async-repro
-      PRODUCT_BUNDLE_IDENTIFIER: com.tauri-ios-async-repro.app
+      PRODUCT_NAME: tauri-app
+      PRODUCT_BUNDLE_IDENTIFIER: com.tauri-app.app
 targetTemplates:
   app:
     type: application
@@ -24,20 +24,20 @@ targetTemplates:
     settings:
       groups: [app]
 targets:
-  tauri-ios-async-repro_iOS:
+  tauri-app_iOS:
     type: application
     platform: iOS
     sources:
       - path: Sources
       - path: Assets.xcassets
       - path: Externals
-      - path: tauri-ios-async-repro_iOS
+      - path: tauri-app_iOS
       - path: assets
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
     info:
-      path: tauri-ios-async-repro_iOS/Info.plist
+      path: tauri-app_iOS/Info.plist
       properties:
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
@@ -54,7 +54,7 @@ targets:
         CFBundleShortVersionString: 0.1.0
         CFBundleVersion: 0.1.0
     entitlements:
-      path: tauri-ios-async-repro_iOS/tauri-ios-async-repro_iOS.entitlements
+      path: tauri-app_iOS/tauri-app_iOS.entitlements
     scheme:
       environmentVariables:
         RUST_BACKTRACE: full
