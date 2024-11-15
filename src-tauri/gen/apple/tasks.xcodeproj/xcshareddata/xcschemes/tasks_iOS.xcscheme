@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "067C19C8047A2326EE93616E"
-               BuildableName = "tauri-app_iOS.app"
-               BlueprintName = "tauri-app_iOS"
-               ReferencedContainer = "container:tauri-app.xcodeproj">
+               BlueprintIdentifier = "DDA39A391E7AF9C61E2043E4"
+               BuildableName = "tasks_iOS.app"
+               BlueprintName = "tasks_iOS"
+               ReferencedContainer = "container:tasks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "067C19C8047A2326EE93616E"
-            BuildableName = "tauri-app_iOS.app"
-            BlueprintName = "tauri-app_iOS"
-            ReferencedContainer = "container:tauri-app.xcodeproj">
+            BlueprintIdentifier = "DDA39A391E7AF9C61E2043E4"
+            BuildableName = "tasks_iOS.app"
+            BlueprintName = "tasks_iOS"
+            ReferencedContainer = "container:tasks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -69,10 +69,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "067C19C8047A2326EE93616E"
-            BuildableName = "tauri-app_iOS.app"
-            BlueprintName = "tauri-app_iOS"
-            ReferencedContainer = "container:tauri-app.xcodeproj">
+            BlueprintIdentifier = "DDA39A391E7AF9C61E2043E4"
+            BuildableName = "tasks_iOS.app"
+            BlueprintName = "tasks_iOS"
+            ReferencedContainer = "container:tasks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -100,10 +100,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "067C19C8047A2326EE93616E"
-            BuildableName = "tauri-app_iOS.app"
-            BlueprintName = "tauri-app_iOS"
-            ReferencedContainer = "container:tauri-app.xcodeproj">
+            BlueprintIdentifier = "DDA39A391E7AF9C61E2043E4"
+            BuildableName = "tasks_iOS.app"
+            BlueprintName = "tasks_iOS"
+            ReferencedContainer = "container:tasks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
