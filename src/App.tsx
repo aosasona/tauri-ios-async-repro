@@ -95,7 +95,7 @@ function App() {
 	}
 
 	return (
-		<main className="container mx-auto px-3 mt-safe-top">
+		<main className="container mx-auto px-4 mt-safe-top">
 			<div className="min-h-safe-top w-screen fixed top-0 left-0 bg-neutral-900/80 backdrop-blur-lg">
 			</div>
 			<h2 className="text-2xl font-bold text-neutral-100 mt-2 md:mt-5 mb-4">Tasks</h2>
